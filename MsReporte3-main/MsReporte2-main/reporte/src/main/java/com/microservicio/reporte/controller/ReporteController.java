@@ -26,7 +26,7 @@ public class ReporteController {
         return ResponseEntity.ok(reporteService.crearReporte(reporte));
     }
 
-    @GetMapping("/obtenerReporte/{descripcion}")
+    @GetMapping("/obtenerReporte/descripcion/{descripcion}")
     public ResponseEntity<Reporte> obtenerReporte(@PathVariable String descripcion){
         Reporte reporte = reporteService.obtenerReporte(descripcion);
         if(reporte != null){
@@ -35,7 +35,7 @@ public class ReporteController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/obtenerReporte/{id}")
+    @GetMapping("/obtenerReporte/id/{id}")
     public ResponseEntity<ReporteDto> obtenerReporteDto(@PathVariable int id){
         if (reporteService.obtenerReporteDto(id)!= null){
             return ResponseEntity.ok(reporteService.obtenerReporteDto(id));
