@@ -12,5 +12,5 @@ public interface ReporteRepository extends JpaRepository<ReporteEntity, Integer>
     ReporteEntity findByDescripcion(String descripcion);
     Boolean existsByDescripcion(String descripcion);
     void deleteByDescripcion(String descripcion);
-    ReporteEntity findidByReporte(int id);
+    ReporteEntity findByIdReporte(int id);
 }
