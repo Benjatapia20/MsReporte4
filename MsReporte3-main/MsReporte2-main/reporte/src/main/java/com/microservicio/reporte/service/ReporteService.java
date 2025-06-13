@@ -57,8 +57,9 @@ public class ReporteService {
 
     public ReporteDto obtenerReporteDto(int id){
         try {
-            ReporteEntity reporte = reporteRepository.findByidReporte(id);
-            ReporteDto nuevoReporte = new ReporteDto(
+            ReporteEntity reporte = reporteRepository.findByIdReporte(id);
+            if(reporte != null) {
+                return new ReporteDto(
                 reporte.getIdReporte(),
                 reporte.getDescripcion(),
                 reporte.getEstado(),
@@ -66,7 +67,8 @@ public class ReporteService {
                 reporte.getTipoReporte(),
                 reporte.getCreadoPor()
             );
-            return nuevoReporte;
+        }
+        return null;
     }catch(Exception e){
         return null;
     }
