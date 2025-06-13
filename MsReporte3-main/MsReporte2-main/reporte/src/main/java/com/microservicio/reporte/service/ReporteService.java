@@ -1,5 +1,7 @@
 package com.microservicio.reporte.service;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +20,9 @@ public class ReporteService {
             Boolean estado = reporteRepository.existsByDescripcion(reporte1.getDescripcion());
             if(!estado){
                 ReporteEntity reporteNuevo = new ReporteEntity();
-                reporteNuevo.setIdReporte(reporte1.getIdReporte());
                 reporteNuevo.setDescripcion(reporte1.getDescripcion());
                 reporteNuevo.setEstado(reporte1.getEstado());
-                reporteNuevo.setFechaCreacion(null);
+                reporteNuevo.setFechaCreacion(reporte1.getFechaCreacion() != null ? reporte1.getFechaCreacion : LocalDate.now());
                 reporteNuevo.setTipoReporte(reporte1.getTipoReporte());
                 reporteNuevo.setCreadoPor(reporte1.getCreadoPor());
                 reporteRepository.save(reporteNuevo);
@@ -39,7 +40,7 @@ public class ReporteService {
         try {
             ReporteEntity reporte = reporteRepository.findByDescripcion(descripcion);
             if(reporte != null){
-                Reporte reporte2 = new Reporte(
+                return new Reporte(
                     reporte.getIdReporte(),
                     reporte.getDescripcion(),
                     reporte.getEstado(),
@@ -47,7 +48,6 @@ public class ReporteService {
                     reporte.getTipoReporte(),
                     reporte.getCreadoPor()
                 );
-                return reporte2;
             }
             return null;
         } catch (Exception e) {
@@ -57,7 +57,7 @@ public class ReporteService {
 
     public ReporteDto obtenerReporteDto(int id){
         try {
-            ReporteEntity reporte = reporteRepository.findByReporte(id);
+            ReporteEntity reporte = reporteRepository.findByidReporte(id);
             ReporteDto nuevoReporte = new ReporteDto(
                 reporte.getIdReporte(),
                 reporte.getDescripcion(),
