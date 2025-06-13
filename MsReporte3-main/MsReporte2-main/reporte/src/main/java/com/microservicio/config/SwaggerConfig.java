@@ -10,10 +10,10 @@ import io.swagger.v3.oas.models.info.Info;
 public class SwaggerConfig {
   @Bean
   public OpenAPI openAPI(){
-    return new openAPI().info(new Info()
-      .title(title:"Proyecto De Usuarios")
-      .version(version:"1.0")
-      .descripcion(description:"Este es el micro servicio de Reportes")
+    return new OpenAPI().info(new Info()
+      .title("Proyecto De Usuarios")
+      .version("1.0")
+      .description("Este es el micro servicio de Reportes")
       );
-}
+  }
 }
