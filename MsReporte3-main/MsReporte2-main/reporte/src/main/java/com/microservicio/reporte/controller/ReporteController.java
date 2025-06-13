@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
 
 import com.microservicio.reporte.model.Reporte;
 import com.microservicio.reporte.model.dto.ReporteDto;
@@ -19,6 +20,7 @@ public class ReporteController {
     @Autowired
     private ReporteService reporteService;
 
+    @Operation(summary = "Este endpoint permite obtener reportes")
     @PostMapping("/crearReporte")
     public ResponseEntity<String> obtenerReporte(@RequestBody Reporte reporte){
         return ResponseEntity.ok(reporteService.crearReporte(reporte));
