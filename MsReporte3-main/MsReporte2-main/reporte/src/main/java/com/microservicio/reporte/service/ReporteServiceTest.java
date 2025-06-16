@@ -33,4 +33,18 @@ public class ReporteServiceTest{
         assertEquals("Reporte Creado Correctamente", resultado);
         verify(reporteRepository, times(1)).save(any(ReporteEntity.class));
     }
+
+
+    @Test
+    public void testCrearReporte_ReporteExiste(){
+        Reporte reporte = new Reporte(0, "Reporte1", true, LocalDate.now(), "TipoA", "Usuario1");
+
+        when(reporteRepository.existsByDescripcion("Reporte1")).thenReturn(true);
+
+        String resultado = reporteService.crearReporte(reporte);
+
+        assertEquals("El Reporte Ya Existe", resultado);
+        verify(reporteRepository, never()).save(any(ReporteEntity.class));
+    }
+
 }
