@@ -22,7 +22,7 @@ public class ReporteService {
                 ReporteEntity reporteNuevo = new ReporteEntity();
                 reporteNuevo.setDescripcion(reporte1.getDescripcion());
                 reporteNuevo.setEstado(reporte1.getEstado());
-                reporteNuevo.setFechaCreacion(reporte1.getFechaCreacion() != null ? reporte1.getFechaCreacion : LocalDate.now());
+                reporteNuevo.setFechaCreacion(reporte1.getFechaCreacion() != null ? reporte1.getFechaCreacion(): LocalDate.now());
                 reporteNuevo.setTipoReporte(reporte1.getTipoReporte());
                 reporteNuevo.setCreadoPor(reporte1.getCreadoPor());
                 reporteRepository.save(reporteNuevo);
