@@ -48,5 +48,4 @@ public class ReporteServiceTest{
         assertEquals("El Reporte Ya Existe", resultado);
         verify(reporteRepository, never()).save(any(ReporteEntity.class));
     }
-
 }
